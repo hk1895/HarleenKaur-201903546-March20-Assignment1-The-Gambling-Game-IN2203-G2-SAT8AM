@@ -78,15 +78,16 @@ class Player{
 class Game{
     
     Random rand = new Random();
-    int guess = rand.nextInt(100);
+    int computerguess = rand.nextInt(100);
 
     //Algorithm where Range will define guess probability between the 50 numbers
-     //when player choose nearly 16th number from the range chances are there he wins the maximum number of the time
    
     public void PlayGame(){
-        int highRange = guess + 25;
-        int lowRange = guess - 25;
-       
+        int highRange = computerguess + 25;
+        int lowRange = computerguess - 25;
+    
+    //when player choose nearly 16th number from the range chances are there he wins the maximum number of the time
+
         Scanner sc2 = new Scanner(System.in);
         int userNumberInput;
         String userInput;
@@ -99,7 +100,7 @@ class Game{
        
        // Condition that player will be accurate when his guess lies within 10 numbers of computer's guess
         
-        if(userNumberInput >= guess-10 && userNumberInput <= guess+10){
+        if(userNumberInput >= computerguess-10 && userNumberInput <= computerguess+10){
             System.out.println("Player won the game");
         }
         else{
