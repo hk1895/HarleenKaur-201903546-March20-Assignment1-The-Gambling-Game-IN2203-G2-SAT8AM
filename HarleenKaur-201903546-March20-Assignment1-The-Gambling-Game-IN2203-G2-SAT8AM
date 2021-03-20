@@ -1,0 +1,109 @@
+//Name: Harleen Kaur
+//Student ID: 201903546
+//Date Submitted: March 20, 2021
+//CLass IN2203 Section Number G2
+// Name of work: Assignment 1: The Gambling Game
+
+//Algorithm where Range will define guess probability between the 50 numbers
+//The probability is set so 50% of the times Player will win 
+// OOP using Encapsulation, Algo partioning into classes, Objects interactions with Method Calls
+
+import java.util.*;
+import java.util.Scanner;
+import java.util.Random;
+
+public class MainApplication{
+    
+    public static void main(String[] args){
+        
+        Casino c = new Casino();
+        c.startgame();
+
+    }
+}
+
+class Casino{
+	// need to create a Player who will play the game
+    Player p = new Player();
+    
+    String userInput;  // will carry information in the form of String
+    Scanner sc = new Scanner(System.in);
+    
+    public void startgame(){
+        System.out.println("Would you like to play a game?(y/n)");
+        userInput = sc.nextLine();
+        
+        if(userInput.equals("y")) {
+            System.out.println("Let's start the game");
+            p. PlayerDetails(); 
+        }
+
+        else{
+            
+        	System.out.println("Thanks For coming.");
+        }
+    }
+}
+
+class Player{
+
+	public void PlayerDetails(){
+
+	Game g = new Game();
+
+	String userInput;
+	int userNumberInput; // will carry information in the form of integer
+    Scanner sc1 = new Scanner(System.in);
+
+		System.out.println("Name of the Player:");
+			userInput = sc1.nextLine();
+
+		System.out.println("Age of the Player:");
+			userNumberInput = sc1.nextInt();
+
+		//Condition where player should be above the age of 18
+
+		if(userNumberInput >= 18){
+			System.out.println("You may play the game");
+			g .PlayGame();
+		}
+		else{
+			System.out.println("You are not allowed to play the game");
+
+		}
+
+	}
+}
+
+class Game{
+    
+    Random rand = new Random();
+    int guess = rand.nextInt(100);
+
+    //Algorithm where Range will define guess probability between the 50 numbers
+     //when player choose nearly 16th number from the range chances are there he wins the maximum number of the time
+   
+    public void PlayGame(){
+        int highRange = guess + 25;
+        int lowRange = guess - 25;
+       
+        Scanner sc2 = new Scanner(System.in);
+        int userNumberInput;
+        String userInput;
+        
+        System.out.println("Guess a number from "+lowRange+" to "+highRange);
+        System.out.println("If Player guess is within 10 of the computer's number : then Player WINS else Computer WINS!");
+        
+        userNumberInput = sc2.nextInt();
+        userInput = sc2.nextLine();
+       
+       // Condition that player will be accurate when his guess lies within 10 numbers of computer's guess
+        
+        if(userNumberInput >= guess-10 && userNumberInput <= guess+10){
+            System.out.println("Player won the game");
+        }
+        else{
+            System.out.println("Computer Won the game");
+        }
+    }
+}
